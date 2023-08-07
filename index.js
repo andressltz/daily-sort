@@ -44,9 +44,8 @@ function choice(option) {
     }
 
   }
-  
+
   let res = split(randomValue, namesLength)
-  res = calculateValue(res, namesLength)
   res = removeDuplicate(res, namesLength)
   positions.push(res)
   return names[res-1]
@@ -64,20 +63,15 @@ function removeDuplicate(value, lenght) {
 }
 
 function split(value, lenght) {
-  let res = value / lenght
-  let sob = value % lenght
-  if (sob == 0) {
+  if (value > lenght) {
+    let res = value % lenght
+    if (res === 0) {
+      return lenght
+    }
     return res
+  } else {
+    return value
   }
-  return sob
-}
-
-function calculateValue(param, lenght) {
-  if (param > lenght) {
-    param = split(param,lenght)
-    return calculateValue(param, lenght)
-  }
-  return param
 }
 
 if (names) {
