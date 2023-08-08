@@ -4,6 +4,7 @@
 }
 
 body {
+    font-family: 'Ubuntu', sans-serif;
     background-color: var(--bg);
     color: var(--text);
 }

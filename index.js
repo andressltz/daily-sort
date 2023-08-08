@@ -2,16 +2,8 @@ let values = new URLSearchParams(window.location.search)
 let nameParam = values.get('names')
 let names = nameParam.split(',')
 let randomParam = values.get('random')
+let qtd = values.get('qtd')
 let positions = []
-
-const nameList1 = document.getElementById('name1')
-const nameList2 = document.getElementById('name2')
-const nameList3 = document.getElementById('name3')
-const nameList4 = document.getElementById('name4')
-const nameItem1 = document.createElement('li')
-const nameItem2 = document.createElement('li')
-const nameItem3 = document.createElement('li')
-const nameItem4 = document.createElement('li')
 
 function choice(option) {
   let namesLength = names.length
@@ -40,7 +32,7 @@ function choice(option) {
         randomValue = (hours)
         break
       default:
-        randomValue = Math.random()
+        randomValue = Math.floor(Math.random() * namesLength)
     }
 
   }
@@ -74,13 +66,34 @@ function split(value, lenght) {
   }
 }
 
+function getOrdinal(n) {
+  let ord = 'th'
+  if (n % 10 == 1 && n % 100 != 11) {
+    ord = 'st';
+  } else if (n % 10 == 2 && n % 100 != 12) {
+    ord = 'nd';
+  } else if (n % 10 == 3 && n % 100 != 13) {
+    ord = 'rd';
+  }
+
+  return n + ord;
+}
+
 if (names) {
-  nameItem1.innerText = choice(1)
-  nameItem2.innerText = choice(2)
-  nameItem3.innerText = choice(3)
-  nameItem4.innerText = choice(4)
-  nameList1.appendChild(nameItem1)
-  nameList2.appendChild(nameItem2)
-  nameList3.appendChild(nameItem3)
-  nameList4.appendChild(nameItem4)
+  if (!qtd) {
+    qtd = 4
+  }
+
+  for (let i = 1; i <= qtd; i++) {
+    const list = document.getElementById('list')
+    const nameH = document.createElement('h2')
+    const nameUl = document.createElement('ul')
+    const nameItemLi = document.createElement('li')
+    nameH.innerText = getOrdinal(i) + " Option"
+    nameItemLi.innerText = choice(i)
+    nameUl.appendChild(nameItemLi)
+    list.appendChild(nameH)
+    list.appendChild(nameUl)
+  }
+
 }
