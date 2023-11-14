@@ -23,13 +23,13 @@ function choice(option) {
         randomValue = (day + month)
         break
       case 2:
-        randomValue = (hours + day + month)
+        randomValue = (day)
         break
       case 3:
-        randomValue = (hours + day + month + years)
+        randomValue = (hours + day + month)
         break
       case 4:
-        randomValue = (hours)
+        randomValue = (hours + day + month + years)
         break
       default:
         randomValue = Math.floor(Math.random() * namesLength)
