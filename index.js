@@ -15,21 +15,21 @@ function choice(option) {
     const date = new Date()
     const day = date.getDate()
     const month = date.getMonth()
-    const hours = date.getHours()
     const years = date.getFullYear()
+    const dayWeek = date.getDay()
 
     switch (option) {
       case 1:
-        randomValue = (day + month)
-        break
-      case 2:
         randomValue = (day)
         break
+      case 2:
+        randomValue = (day + month)
+        break
       case 3:
-        randomValue = (hours + day + month)
+        randomValue = (day + month + years)
         break
       case 4:
-        randomValue = (hours + day + month + years)
+        randomValue = (day + month + years + dayWeek)
         break
       default:
         randomValue = Math.floor(Math.random() * namesLength)
