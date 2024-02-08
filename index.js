@@ -49,7 +49,7 @@ function removeDuplicate(value, lenght) {
     if (value > lenght) {
       value = 1
     }
-    return removeDuplicate(value)
+    return removeDuplicate(value, lenght)
   }
   return value
 }
