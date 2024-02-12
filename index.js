@@ -10,7 +10,13 @@ function choice(option) {
   let randomValue
   if (randomParam == 1) {
     randomValue = Math.random()
-    return names[Math.floor(randomValue * namesLength)]
+    randomValue = Math.floor(randomValue * namesLength)
+
+    let res = split(randomValue, namesLength)
+    res = removeDuplicate(res, namesLength)
+    if (res == 0) res = removeDuplicate(1, namesLength)
+    positions.push(res)
+    return names[res-1]
   } else {
     const date = new Date()
     const day = date.getDate()
